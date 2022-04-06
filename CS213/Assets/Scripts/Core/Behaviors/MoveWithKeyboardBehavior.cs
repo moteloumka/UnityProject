@@ -15,7 +15,11 @@ public class MoveWithKeyboardBehavior : AgentBehaviour
     public InputKeyboard inputKeyboard;
     public void Start()
     {
-        
+        if (inputKeyboard == InputKeyboard.arrows)
+            agent.SetVisualEffect(0, Color.blue, 100);
+
+        if (inputKeyboard == InputKeyboard.wasd) 
+            agent.SetVisualEffect(0,Color.yellow,100);
     }
     public override Steering GetSteering()
     {
