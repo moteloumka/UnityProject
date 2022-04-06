@@ -11,9 +11,9 @@ public class GhostSheepBehavior : AgentBehaviour
     private const float MIN_TIME_GHOST = 6f;
     private const float MAX_TIME_GHOST = 8f;
     private const float MIN_DIST_FOR_REACTION_GHOST = 20f;
-    private const float MIN_DIST_FOR_REACTION_SHEEP = 3f;
+    private const float MIN_DIST_FOR_REACTION_SHEEP = 6f;
 
-    private float MIN_DIST_FOR_REACTION = 0.6f;
+    private float MIN_DIST_FOR_REACTION = 6f;
 
     public int player1Score = 0;
     public int player2Score = 0;
