@@ -44,7 +44,7 @@ public class GhostSheepBehavior : AgentBehaviour
         MIN_DIST_FOR_REACTION = MIN_DIST_FOR_REACTION_SHEEP;
         float time = UnityEngine.Random.Range(MIN_TIME_SHEEP, MAX_TIME_SHEEP);
         this.agent.SetVisualEffect(0, Color.green, 100);
-        //Invoke("transformIntoGhost",time);
+        Invoke("transformIntoGhost",time);
 
     }
 

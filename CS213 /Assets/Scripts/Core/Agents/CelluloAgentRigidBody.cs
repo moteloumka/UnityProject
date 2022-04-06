@@ -14,12 +14,11 @@ public class CelluloAgentRigidBody : CelluloAgent
         base.Awake();
         _rigidBody = GetComponent<Rigidbody>();
     }
-    
 
     protected override void FixedUpdate()
     {
         if (steering.linear.sqrMagnitude == 0.0f)
-            _rigidBody.velocity = Vector3.zero;
+            _rigidBody.velocity = Vector3.zero; 
         else
         {
             if(_rigidBody.velocity.sqrMagnitude<maxSpeed*maxSpeed)

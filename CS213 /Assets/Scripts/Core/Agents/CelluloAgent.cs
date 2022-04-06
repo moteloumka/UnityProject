@@ -88,7 +88,6 @@ public class CelluloAgent : SteeringAgent
     {
         if (isConnected) _celluloRobot.Reset();
         
-        
     }
     /// <summary>
 	/// Set the reference to the robot to Null
