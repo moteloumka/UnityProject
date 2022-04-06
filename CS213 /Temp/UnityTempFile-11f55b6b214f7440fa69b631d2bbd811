@@ -9,8 +9,6 @@
 /nostdlib+
 /preferreduilang:en-US
 /langversion:8.0
-/reference:"Library/ScriptAssemblies/UnityEditor.UI.dll"
-/reference:"Library/ScriptAssemblies/UnityEngine.UI.dll"
 /reference:"/Applications/Unity/Hub/Editor/2020.3.5f1/Unity.app/Contents/Managed/UnityEngine/UnityEditor.CoreModule.dll"
 /reference:"/Applications/Unity/Hub/Editor/2020.3.5f1/Unity.app/Contents/Managed/UnityEngine/UnityEditor.GraphViewModule.dll"
 /reference:"/Applications/Unity/Hub/Editor/2020.3.5f1/Unity.app/Contents/Managed/UnityEngine/UnityEditor.PackageManagerUIModule.dll"
@@ -208,6 +206,8 @@
 /reference:"Library/ScriptAssemblies/Unity.Timeline.dll"
 /reference:"Library/ScriptAssemblies/Unity.VSCode.Editor.dll"
 /reference:"Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll"
+/reference:"Library/ScriptAssemblies/UnityEditor.UI.dll"
+/reference:"Library/ScriptAssemblies/UnityEngine.UI.dll"
 /define:CSHARP_7_3_OR_NEWER
 /define:CSHARP_7_OR_LATER
 /define:DEBUG

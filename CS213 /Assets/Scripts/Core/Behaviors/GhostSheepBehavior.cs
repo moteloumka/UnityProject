@@ -17,17 +17,12 @@ public class GhostSheepBehavior : AgentBehaviour
 
     public int player1Score = 0;
     public int player2Score = 0;
-    
-    /*
-    private long rSheep = 0;
-    private long gSheep = 0;
-    private long bSheep = 0;
-    
-    private long rGhost = 200;
-    private long gGhost = 0;
-    private long bGhost = 0;
-    */
 
+    public AudioSource source;
+    public AudioClip beeeehhhhh;
+    public AudioClip wooooofff;
+    public AudioClip getAttacked;
+    
     private GameObject _player1;
     private GameObject _player2;
 
@@ -38,13 +33,19 @@ public class GhostSheepBehavior : AgentBehaviour
 
     public void Start()
     {
+        gameObject.tag = "GhostSheep";
         _player1 = GameObject.Find("CelluloAgent_2");
         _player2 = GameObject.Find("CelluloAgent_1");
         
         _behavior1 = _player1.GetComponent<MoveWithKeyboardBehavior>();
         _behavior2 = _player2.GetComponent<MoveWithKeyboardBehavior>();
         
-        transformIntoSheep();
+        isAttacking = false;
+        MIN_DIST_FOR_REACTION = MIN_DIST_FOR_REACTION_SHEEP;
+        float time = UnityEngine.Random.Range(MIN_TIME_SHEEP, MAX_TIME_SHEEP);
+        this.agent.SetVisualEffect(0, Color.green, 100);
+        //Invoke("transformIntoGhost",time);
+
     }
 
     private void transformIntoGhost()
@@ -53,6 +54,8 @@ public class GhostSheepBehavior : AgentBehaviour
         MIN_DIST_FOR_REACTION = MIN_DIST_FOR_REACTION_GHOST;
         float time = UnityEngine.Random.Range(MIN_TIME_GHOST, MAX_TIME_GHOST);
         this.agent.SetVisualEffect(0, Color.red, 100);
+        source.PlayOneShot(wooooofff);
+
         Invoke("transformIntoSheep",time);
     }
 
@@ -62,6 +65,7 @@ public class GhostSheepBehavior : AgentBehaviour
         MIN_DIST_FOR_REACTION = MIN_DIST_FOR_REACTION_SHEEP;
         float time = UnityEngine.Random.Range(MIN_TIME_SHEEP, MAX_TIME_SHEEP);
         this.agent.SetVisualEffect(0, Color.green, 100);
+        source.PlayOneShot(beeeehhhhh);
         Invoke("transformIntoGhost",time);
     }
     
@@ -108,16 +112,14 @@ public class GhostSheepBehavior : AgentBehaviour
             if (col.gameObject.name == "CelluloAgent_2")
             {
                 --player1Score;
-                Debug.Log("player1Score : " + player1Score);
+                source.PlayOneShot(getAttacked);
             }
             else if (col.gameObject.name == "CelluloAgent_1")
             {
                 --player2Score;
-                Debug.Log("player2Score : " + player2Score);
+                source.PlayOneShot(getAttacked);
             }
-            
         }
-        
     }
 
     public GameObject FindClosestPlayer()
@@ -128,8 +130,7 @@ public class GhostSheepBehavior : AgentBehaviour
         GameObject closestPlayer;
         if ((posGS - pos1).magnitude <= (posGS - pos2).magnitude) closestPlayer = _player1;
         else closestPlayer = _player2;
-//
-        Debug.Log("the closest player is : " + closestPlayer.name);
+        
         return closestPlayer;
     }
 

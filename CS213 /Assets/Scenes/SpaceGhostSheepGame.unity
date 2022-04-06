@@ -1500,6 +1500,16 @@ MonoBehaviour:
   isAttacking: 0
   player1Score: 0
   player2Score: 0
+  source: {fileID: 0}
+  clip: {fileID: 8300000, guid: 606621ca451e37dc7814bb28809e9de5, type: 3}
+--- !u!81 &2004279494
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004279488}
+  m_Enabled: 1
 --- !u!1 &2098442458 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3040563576298773591, guid: d44936f6062330e28ab4d37456de1881, type: 3}
