@@ -10,7 +10,10 @@ public class GhostSheepBehavior : AgentBehaviour
     private const float MAX_TIME_SHEEP = 15f;
     private const float MIN_TIME_GHOST = 6f;
     private const float MAX_TIME_GHOST = 8f;
-    private float MIN_DIST_FOR_REACTION = 6f;
+    private const float MIN_DIST_FOR_REACTION_GHOST = 20f;
+    private const float MIN_DIST_FOR_REACTION_SHEEP = 3f;
+
+    private float MIN_DIST_FOR_REACTION = 0.6f;
 
     public int player1Score = 0;
     public int player2Score = 0;
@@ -47,7 +50,7 @@ public class GhostSheepBehavior : AgentBehaviour
     private void transformIntoGhost()
     {
         isAttacking = true;
-        MIN_DIST_FOR_REACTION = 15f;
+        MIN_DIST_FOR_REACTION = MIN_DIST_FOR_REACTION_GHOST;
         float time = UnityEngine.Random.Range(MIN_TIME_GHOST, MAX_TIME_GHOST);
         Invoke("transformIntoSheep",time);
     }
@@ -55,8 +58,9 @@ public class GhostSheepBehavior : AgentBehaviour
     private void transformIntoSheep()
     {
         isAttacking = false;
-        MIN_DIST_FOR_REACTION = 6f;
+        MIN_DIST_FOR_REACTION = MIN_DIST_FOR_REACTION_SHEEP;
         float time = UnityEngine.Random.Range(MIN_TIME_SHEEP, MAX_TIME_SHEEP);
+        
         Invoke("transformIntoGhost",time);
     }
     
@@ -98,16 +102,21 @@ public class GhostSheepBehavior : AgentBehaviour
     
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.name == "CelluloAgent_2")
+        if (isAttacking)
         {
-            --player1Score;
-            Debug.Log("player1Score : " + player1Score);
+            if (col.gameObject.name == "CelluloAgent_2")
+            {
+                --player1Score;
+                Debug.Log("player1Score : " + player1Score);
+            }
+            else if (col.gameObject.name == "CelluloAgent_1")
+            {
+                --player2Score;
+                Debug.Log("player2Score : " + player2Score);
+            }
+            
         }
-        else if (col.gameObject.name == "CelluloAgent_1")
-        {
-            --player2Score;
-            Debug.Log("player2Score : " + player2Score);
-        }
+        
     }
 
     public GameObject FindClosestPlayer()
